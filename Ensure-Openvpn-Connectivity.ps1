@@ -24,14 +24,16 @@ param(
 
 # Check if service is up. If not, restart it.
 if ((Get-Service $serviceName).Status -ne "Running") {
-    Write-Host "Service ${serviceName} not up, restarting it."
+    date >> Ensure-OpenVPN-Connectivity.log
+    Write-Output "Service ${serviceName} not up, restarting it." >> Ensure-OpenVPN-Connectivity.log
     Start-Service $serviceName
     Exit 0
 }
 
 # Check if connectivity works. If not, restart the service.
 if (! (Test-Connection -Count $pingCount -Delay $pingDelay -Destination $pingDestination)) {
-    Write-Host "Connectivity test failed. Restarting service ${serviceName}."
+    date >> Ensure-OpenVPN-Connectivity.log
+    Write-Output "Connectivity test failed. Restarting service ${serviceName}." >> Ensure-OpenVPN-Connectivity.log
     Restart-Service $serviceName
     Exit 0
 }

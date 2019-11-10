@@ -33,4 +33,6 @@ You can also override the default service name which is OpenVPNService:
 
     Ensure-Openvpn-Connectivity -pingAddress 10.174.1.1 -serviceName OpenVPNServiceLegacy
 
+If the script needs to run restart the service it will write the date and the
+error in to a log file into the working directory.
 
