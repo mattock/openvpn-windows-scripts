@@ -36,3 +36,9 @@ You can also override the default service name which is OpenVPNService:
 If the script needs to run restart the service it will write the date and the
 error in to a log file into the working directory.
 
+## Running as a scheduled task
+
+This script can run as a scheduled task. Please refer to the [Puppet code
+sample](ensure_openvpn_connectivity.pp) to get an idea. You can translate that
+code mechanically to Powershell DSC or manually create a scheduled task from
+it.
